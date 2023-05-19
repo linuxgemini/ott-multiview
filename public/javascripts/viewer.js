@@ -170,8 +170,8 @@ function onKeyPress(ev) {
     } else {
       document.documentElement.requestFullscreen();
     }
-  } else if (ev.keyCode >= 49 && ev.keyCode <= 56) {
-    // 1-8
+  } else if (ev.keyCode >= 49 && ev.keyCode <= 57) {
+    // 1-9
     var idx = ev.keyCode - 49;
     var row = 0;
     if (idx > 2) {
