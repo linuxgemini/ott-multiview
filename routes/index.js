@@ -10,7 +10,8 @@ const path = require('path');
 function initiateDefaultConf() {
   return {
     "row0": [],
-    "row1": []
+    "row1": [],
+    "row2": []
   };
 }
 
@@ -25,7 +26,7 @@ router.get('/', function(req, res) {
       var confobj = JSON.parse(fs.readFileSync(path.join(__dirname, confpath), 'utf8'));
     }
   }
-  res.render('index', { title: 'Eyevinn Technology OTT Multiview', conf: JSON.stringify(confobj) });
+  res.render('index', { title: 'OTT Multiview', conf: JSON.stringify(confobj) });
 });
 
 module.exports = router;

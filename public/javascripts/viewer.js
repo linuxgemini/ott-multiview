@@ -145,21 +145,14 @@ function togglePlaybackOnAllViewPorts() {
       togglePlayback(videoelem);
     }
   }
-  togglePlayback(document.getElementById('vpleft')); 
-  togglePlayback(document.getElementById('vpright')); 
 }
 
 function initMultiView(config) {
   if (config) {
     shaka.polyfill.installAll();
-    initViewPortRow(0, 4, config);
-    initViewPortRow(1, 4, config);
-    if(config['row0'][0]) { 
-      initViewPort(config['row0'][0], 'vpleft');
-    }
-    if(config['row1'][0]) { 
-      initViewPort(config['row1'][0], 'vpright');
-    }
+    initViewPortRow(0, 3, config);
+    initViewPortRow(1, 3, config);
+    initViewPortRow(2, 3, config);
   }
 }
 
@@ -178,12 +171,16 @@ function onKeyPress(ev) {
       document.documentElement.requestFullscreen();
     }
   } else if (ev.keyCode >= 49 && ev.keyCode <= 56) {
-    // 1-8 
+    // 1-8
     var idx = ev.keyCode - 49;
     var row = 0;
-    if (idx > 3) {
-      idx -= 4;
+    if (idx > 2) {
+      idx -= 3;
       row = 1;
+    }
+    if (idx > 2) {
+      idx -= 3;
+      row = 2;
     }
     videoelemid = 'vp' + row + idx;
     activateViewPort(videoelemid);

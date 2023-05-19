@@ -52,7 +52,7 @@ th {
 }
 
 .info {
-  background: url('../images/eyevinn-logo-square.png');
+  background: url('../images/logo.jpg');
   background-color: #fff;
   background-repeat: no-repeat;
   background-position: center;
@@ -117,4 +117,3 @@ video {
   padding: 3px;
   background-color: #000;
 }
-
