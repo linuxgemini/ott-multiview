@@ -20,10 +20,14 @@ router.get('/', function(req, res) {
   conf = req.query.config;
   var confobj = initiateDefaultConf();
   if(conf) {
-    var confpath = '../config/'+conf;
-    console.log("Loading config " + confpath);
-    if (fs.existsSync(path.join(__dirname, confpath))) {
-      var confobj = JSON.parse(fs.readFileSync(path.join(__dirname, confpath), 'utf8'));
+    var basefolder = path.normalize(path.join(__dirname, ".."));
+
+    var confpath = path.join(basefolder, "config", path.normalize(conf));
+    console.log("Constructed config path: " + confpath)
+
+    if (confpath.startsWith(basefolder) && fs.existsSync(confpath)) {
+      console.log("Loading config " + confpath);
+      var confobj = JSON.parse(fs.readFileSync(confpath), 'utf8');
     }
   }
   res.render('index', { title: 'OTT Multiview', conf: JSON.stringify(confobj) });
